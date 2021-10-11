@@ -1,0 +1,22 @@
+ќписание функции UnlimiteFingers:
+ѕеревод дес€тичного значени€ числа в двоичное, троичное, четверичное и т.д. до 255-ичного
+(при наличии дополнительных неповтор€ющихс€ символов до пределов переменных integer).
+E-mail автора: s21@inbox.ru.
+
+function UnlimiteFingers(Symbols:String;Number:Longword) : String;
+ // автор идеи алгоритма функции UnlimiteFingers - Gordeev
+ // e-mail: gordeev@smtp.ru
+var g,f,s:Longword;  DF,GH:string;
+begin
+  f:=Number mod Length(Symbols);
+  if Number<Length(Symbols) then
+   Result:=Symbols[f+1]
+   else
+   while Number>=Length(Symbols) do begin
+ Number:=Number div Length(Symbols);  g:=Number mod Length(Symbols);
+ DF:=DF+Symbols[g+1];
+ GH:=Symbols[f+1]+DF;
+  end;
+ for s:=Length(GH) downto  1 do
+  Result:=Result+GH[s];
+end;
